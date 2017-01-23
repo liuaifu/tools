@@ -105,6 +105,8 @@ def handle_picture(filename):
             cv2.rectangle(img, (x_rect,y_rect), (x_rect+rect_width,y_rect+rect_height), (0, 255, 0), 2)
             cv2.imshow("image", img)
         elif ch==115:   #s
+            img = img_origin.copy()
+            img = cv2.resize(img, (int(width*coefficient), int(height*coefficient)))
             img_small = img[y_rect:y_rect+rect_height,x_rect:x_rect+rect_width]
             gray = cv2.cvtColor(img_small, cv2.COLOR_BGR2GRAY)
             if not os.path.exists('out'):
